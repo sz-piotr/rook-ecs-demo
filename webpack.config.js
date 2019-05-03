@@ -18,8 +18,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.[tj]sx?$/,
-        loader: 'awesome-typescript-loader',
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
         exclude: /node_modules/
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
