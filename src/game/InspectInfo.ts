@@ -1,4 +1,9 @@
 export interface InspectInfo {
-  name: string,
-  props: { key: string, value: string }[]
+  name: string
+  props: InspectProp[]
+}
+
+export interface InspectProp {
+  key: string
+  value: string
 }

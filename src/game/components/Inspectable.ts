@@ -1,3 +1,3 @@
 export class Inspectable {
-  constructor() {}
+  static type = 'Inspectable'
 }
