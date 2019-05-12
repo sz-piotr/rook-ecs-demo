@@ -6,7 +6,6 @@ export const init = createSystem(InitEvent, function (world) {
     new Position(0, 0),
     new Velocity(10, 10),
     new Rectangle('red', 100, 100),
-    new Inspectable(),
   ])
 
   world.add([

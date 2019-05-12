@@ -2,8 +2,9 @@ import { start, gameClock } from 'rook-ecs'
 import { InspectInfo } from './InspectInfo'
 import { init } from './systems/init'
 import { move } from './systems/move'
-import { render } from './systems/render'
+import { clickToInspect } from './systems/clickToInspect'
 import { inspector } from './systems/inspector'
+import { render } from './systems/render'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -13,6 +14,7 @@ export function startGame (
     gameClock(),
     init,
     move,
+    clickToInspect(canvas),
     inspector(setInspected),
     render(canvas),
   ])

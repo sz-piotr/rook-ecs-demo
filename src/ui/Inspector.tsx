@@ -9,6 +9,12 @@ export function Inspector({ value }: InspectorProps) {
   return (
     <div className="inspector">
       <p className="inspector-title">Inspector</p>
+      {value.length === 0 &&
+        <p className="inspector-empty">
+          Nothing is inspected.<br />
+          Click on an entity to select it.
+        </p>
+      }
       <ul className="components">
         {value.map(item => (
           <li className="component" key={item.name}>
