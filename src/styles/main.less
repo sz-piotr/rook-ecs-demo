@@ -6,15 +6,14 @@
 
 body,
 html {
-  font-size: 16px;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  background-color: #222;
+  font-size: 18px;
+  font-family: 'Fira Mono', monospace;
+  color: #073642;
   width: 100%;
   height: 100%;
 }
 
-#app {
+#app, .app {
   width: 100%;
   height: 100%;
 }
@@ -23,4 +22,67 @@ html {
   display: block;
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-areas:
+    'left right';
+  grid-template-columns: 300px auto;
+}
+
+.canvas {
+  grid-area: right;
+  width: 100%;
+  height: 100%;
+}
+
+.inspector {
+  grid-area: left;
+  height: 100%;
+  background-color: #fdf5e3;
+  box-shadow: 0 0 4px 0 #d8d4c4;
+}
+
+.inspector-title {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 8px 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+.components {
+  padding: 0;
+  margin: 0;
+}
+
+.component-name {
+  margin: 0;
+  padding: 4px 8px;
+  background-color: #d8d4c4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.component-props {
+  margin: 0;
+  padding: 0;
+}
+
+.component-prop {
+  padding: 4px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.component-prop-key {
+  text-align: right;
+}
+
+.component-prop-key,
+.component-prop-value {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
