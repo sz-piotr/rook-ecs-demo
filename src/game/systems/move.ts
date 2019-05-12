@@ -1,7 +1,7 @@
-import { createSystem, PhisicsTick } from 'rook-ecs'
+import { createSystem, PhysicsTick } from 'rook-ecs'
 import { Position, Velocity } from '../components'
 
-export const move = createSystem(PhisicsTick, function (world) {
+export const move = createSystem(PhysicsTick, function (world) {
   for (const entity of world.query(Position, Velocity)) {
     const position = entity.get(Position)
     const velocity = entity.get(Velocity)
