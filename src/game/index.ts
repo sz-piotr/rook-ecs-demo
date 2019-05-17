@@ -4,7 +4,7 @@ import { init } from './systems/init'
 import { move } from './systems/move'
 import { clickToInspect } from './systems/clickToInspect'
 import { inspector } from './systems/inspector'
-import { render } from './systems/render'
+import { render } from './systems/render/render'
 
 export function startGame (
   canvas: HTMLCanvasElement,
