@@ -11,7 +11,7 @@ export class Renderable {
     return {
       name: Renderable.type,
       props: [
-        { key: 'zIndex', value: this.zIndex.toString(2) },
+        { key: 'zIndex', value: this.zIndex.toString() },
       ]
     }
   }

@@ -1,5 +1,5 @@
 import { createSystem, InitEvent } from 'rook-ecs'
-import { Position, Velocity, Rectangle, Renderable } from '../components'
+import { Position, Velocity, Rectangle, Renderable, KeyboardController } from '../components'
 
 export const init = createSystem(InitEvent, function (world) {
   for (let i = 0; i < 100; i++) {
@@ -19,6 +19,13 @@ export const init = createSystem(InitEvent, function (world) {
       ])
     }
   }
+  world.add([
+    new Position(uniform(300, 600), uniform(300, 600)),
+    new Velocity(0, 0),
+    new Rectangle('blue', 50, 50),
+    new Renderable(30),
+    new KeyboardController(500)
+  ])
 })
 
 function uniform (from: number, to: number) {

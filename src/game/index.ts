@@ -5,6 +5,8 @@ import { move } from './systems/move'
 import { clickToInspect } from './systems/clickToInspect'
 import { inspector } from './systems/inspector'
 import { render } from './systems/render/render'
+import { keyboardInput } from './systems/keyboardInput'
+import { keyboardControl } from './systems/keyboardControl'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -13,6 +15,8 @@ export function startGame (
   return start([
     gameClock(),
     init,
+    keyboardInput(),
+    keyboardControl,
     move,
     clickToInspect(canvas),
     inspector(setInspected),
