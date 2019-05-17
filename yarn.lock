@@ -3824,10 +3824,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rook-ecs@^0.9.0-beta:
-  version "0.9.0-beta"
-  resolved "https://registry.yarnpkg.com/rook-ecs/-/rook-ecs-0.9.0-beta.tgz#4c30f5aec5c996398b5adcf75ecdb3b902046ffb"
-  integrity sha512-Y8WsbfN/mjlLE1PbZeMdYjF2gCkjZUZz0ypYHnIPblq8C/IhxUEsRAdT1XpXE1XGEdHINVpbOW1neP0jCnNnVw==
+rook-ecs@^0.10.0-beta:
+  version "0.10.0-beta"
+  resolved "https://registry.yarnpkg.com/rook-ecs/-/rook-ecs-0.10.0-beta.tgz#faaf308a31d6d7c435865a710ba4162d725431fa"
+  integrity sha512-e/rK0lZkFbuciQi+WBv+0o3Dn2k8H9Y3rJ1BA95EmLyZc/LxzrX+FICVsDbSEHyPR2UQvim9J00R8SjhX9lPPg==
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
