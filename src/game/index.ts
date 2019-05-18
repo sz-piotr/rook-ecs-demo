@@ -10,6 +10,7 @@ import { keyboardInput } from './systems/keyboardInput'
 import { keyboardControl } from './systems/keyboardControl'
 import { cameraControl } from './systems/cameraControl'
 import { spawnEnemies } from './systems/spawnEnemies'
+import { killDistantEnemies } from './systems/killDistantEnemies'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -20,6 +21,7 @@ export function startGame (
     gameClock(),
     init,
     spawnEnemies,
+    killDistantEnemies,
     keyboardInput(),
     keyboardControl,
     move,

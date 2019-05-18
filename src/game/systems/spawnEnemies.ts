@@ -1,5 +1,6 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
 import { Position, Player, Velocity, Sprite, Collider, Renderable, EnemySpawner } from '../components'
+import { Enemy } from '../components/Enemy';
 
 export const spawnEnemies = createSystem(PhysicsTick, function (world) {
   for (const entity of world.query(EnemySpawner)) {
@@ -25,9 +26,10 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
         world.add([
           position,
           new Velocity(0, 0),
+          new Renderable(10),
           Sprite.forDemonLarge(),
           Collider.forDemonLarge(),
-          new Renderable(10)
+          Enemy.forDemonLarge(),
         ])
       }
     }
