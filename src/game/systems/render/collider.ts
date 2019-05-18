@@ -16,4 +16,6 @@ export function renderCollider (ctx: CanvasRenderingContext2D, entity: Entity) {
     collider.right - collider.left,
     collider.bottom - collider.top,
   )
+  ctx.fillStyle = 'red'
+  ctx.fillRect(position.x - 3, position.y - 3, 6, 6)
 }
