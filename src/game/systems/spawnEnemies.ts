@@ -9,7 +9,8 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
 
     if (spawner.timeLeft < 0) {
       spawner.difficulty += 1
-      spawner.timeLeft += uniform(0.5, 5 - Math.min(spawner.difficulty / 10, 4))
+      // spawner.timeLeft += uniform(0.5, 5 - Math.min(spawner.difficulty / 10, 4))
+      spawner.timeLeft = 0.3
 
       const player = world.query(Player, Position)[0]
       if (player) {

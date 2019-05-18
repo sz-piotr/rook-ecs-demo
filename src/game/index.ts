@@ -12,6 +12,7 @@ import { cameraControl } from './systems/cameraControl'
 import { spawnEnemies } from './systems/spawnEnemies'
 import { killDistantEnemies } from './systems/killDistantEnemies'
 import { enemyControl } from './systems/enemyControl'
+import { enemyHerding } from './systems/enemyHerding'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -26,6 +27,7 @@ export function startGame (
     keyboardInput(),
     keyboardControl,
     enemyControl,
+    enemyHerding,
     move,
     cameraControl(canvas),
     clickToInspect(canvas),

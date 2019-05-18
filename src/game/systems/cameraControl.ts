@@ -12,6 +12,6 @@ export const cameraControl = (canvas: HTMLCanvasElement) =>
 
       cameraPosition.x = playerPosition.x
       cameraPosition.y = playerPosition.y
-      cameraComponent.zoom = Math.max(canvas.width, canvas.height) / 7000
+      cameraComponent.zoom = Math.max(canvas.width, canvas.height) / 2000
     }
   })

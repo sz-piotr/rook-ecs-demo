@@ -1,5 +1,6 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
 import { Position, Player, Enemy, Velocity } from '../components'
+import { Vector2 } from 'src/util/vector'
 
 export const enemyControl = createSystem(PhysicsTick, function (world) {
   const player = world.query(Position, Player)[0]
@@ -13,7 +14,7 @@ export const enemyControl = createSystem(PhysicsTick, function (world) {
     const velocity = entity.get(Velocity)
     const position = entity.get(Position)
 
-    const direction = normalize({
+    const direction = Vector2.normalize({
       x: playerPosition.x - position.x,
       y: playerPosition.y - position.y,
     })
@@ -22,12 +23,3 @@ export const enemyControl = createSystem(PhysicsTick, function (world) {
     velocity.y = direction.y * speed
   }
 })
-
-type Point = { x: number, y: number }
-function normalize ({ x, y }: Point) {
-  const length = Math.sqrt(x * x + y * y)
-  return {
-    x: x / length,
-    y: y / length
-  }
-}
