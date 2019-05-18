@@ -9,8 +9,7 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
 
     if (spawner.timeLeft < 0) {
       spawner.difficulty += 1
-      // spawner.timeLeft += uniform(0.5, 5 - Math.min(spawner.difficulty / 10, 4))
-      spawner.timeLeft = 0.3
+      spawner.timeLeft += uniform(0.5, 5 - Math.min(spawner.difficulty / 10, 4))
 
       const player = world.query(Player, Position)[0]
       if (player) {
@@ -24,15 +23,50 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
           playerPosition.y + Math.sin(angle) * distance,
         )
 
-        world.add([
-          position,
-          new Velocity(0, 0),
-          new Renderable(10),
-          Sprite.forDemonLarge(),
-          Collider.forDemonLarge(),
-          Enemy.forDemonLarge(),
-        ])
+        const [fastTreshold, largeTreshold] = getChances(spawner.difficulty)
+
+        const roll = Math.random()
+        if (roll < fastTreshold) {
+          world.add([
+            position,
+            new Velocity(0, 0),
+            new Renderable(10),
+            Sprite.forDemonBasic(),
+            Collider.forDemonBasic(),
+            Enemy.forDemonBasic(),
+          ])
+        } else if (roll < largeTreshold) {
+          world.add([
+            position,
+            new Velocity(0, 0),
+            new Renderable(10),
+            Sprite.forDemonFast(),
+            Collider.forDemonFast(),
+            Enemy.forDemonFast(),
+          ])
+        } else {
+          world.add([
+            position,
+            new Velocity(0, 0),
+            new Renderable(10),
+            Sprite.forDemonLarge(),
+            Collider.forDemonLarge(),
+            Enemy.forDemonLarge(),
+          ])
+        }
       }
     }
   }
 })
+
+function getChances (difficulty: number) {
+  if (difficulty < 3) {
+    return [0.9, 1]
+  } else if (difficulty < 10) {
+    return [0.8, 0.95]
+  } else if (difficulty < 20) {
+    return [0.5, 0.7]
+  } else {
+    return [0.2, 0.6]
+  }
+}

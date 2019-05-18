@@ -22,7 +22,7 @@ export class Enemy {
   }
 
   static forDemonFast () {
-    return new Enemy(600, 5)
+    return new Enemy(400, 5)
   }
 
   static forDemonLarge () {

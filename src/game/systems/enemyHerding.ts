@@ -16,7 +16,7 @@ export const enemyHerding = createSystem(PhysicsTick, function (world) {
       const distance = Vector2.length(diff)
       const direction = Vector2.normalize(diff)
 
-      const force = 200 / Math.sqrt(distance)
+      const force = 250 / Math.sqrt(distance)
 
       const aVel = a.get(Velocity)
       const bVel = b.get(Velocity)
