@@ -1,5 +1,5 @@
 import { World, InitEvent, RenderTick } from 'rook-ecs'
-import { Inspectable, Position, Rectangle, Renderable } from '../components'
+import { Inspectable, Position, Collider, Renderable } from '../components'
 import { sortByZIndex } from './render/sortByZIndex'
 import { reversed } from 'src/util/reverse';
 
@@ -37,10 +37,10 @@ function inspectClicked (world: World<any>, { x, y }: Point) {
     entity.remove(Inspectable)
   }
 
-  const entities = sortByZIndex(world.query(Renderable, Position, Rectangle))
+  const entities = sortByZIndex(world.query(Renderable, Position, Collider))
   for (const entity of reversed(entities)) {
     const position = entity.get(Position)
-    const rectangle = entity.get(Rectangle)
+    const rectangle = entity.get(Collider)
 
     if (
       x >= position.x &&

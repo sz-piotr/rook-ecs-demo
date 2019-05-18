@@ -1,6 +1,6 @@
 export { Position } from './Position'
 export { Velocity } from './Velocity'
-export { Rectangle } from './Rectangle'
+export { Collider } from './Collider'
 export { Inspectable } from './Inspectable'
 export { Renderable } from './Renderable'
 export { KeyboardInput } from './KeyboardInput'
