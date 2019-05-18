@@ -3,9 +3,9 @@ import './styles/main.less'
 import React from 'react'
 import { render } from 'react-dom'
 
-import { App } from './ui/App'
+import { GameView } from './ui/GameView'
 
 render(
-  <App />,
+  <GameView />,
   document.getElementById('app'),
 )

@@ -30,8 +30,8 @@ export function GameView () {
 
   return (
     <div className="game-view">
-      <Inspector value={inspected} />
       <canvas className="canvas" ref={canvas} />
+      <Inspector value={inspected} />
     </div>
   )
 }
