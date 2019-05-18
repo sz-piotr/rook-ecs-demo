@@ -14,7 +14,7 @@ export function renderSprite (ctx: CanvasRenderingContext2D, entity: Entity, ass
 
   ctx.drawImage(
     image,
-    position.x,
-    position.y,
+    position.x - image.width / 2,
+    position.y - image.height / 2,
   )
 }

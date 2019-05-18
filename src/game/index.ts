@@ -8,6 +8,7 @@ import { inspector } from './systems/inspector'
 import { render } from './systems/render/render'
 import { keyboardInput } from './systems/keyboardInput'
 import { keyboardControl } from './systems/keyboardControl'
+import { cameraControl } from './systems/cameraControl'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -20,6 +21,7 @@ export function startGame (
     keyboardInput(),
     keyboardControl,
     move,
+    cameraControl,
     clickToInspect(canvas),
     inspector(setInspected),
     render(canvas, assets),

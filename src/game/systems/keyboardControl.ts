@@ -1,15 +1,15 @@
 import { createSystem, PhysicsTick, World } from 'rook-ecs'
-import { Velocity, KeyboardInput, KeyboardController } from '../components'
+import { Velocity, KeyboardInput, Player } from '../components'
 
 const SQRT_2 = Math.sqrt(2)
 
 export const keyboardControl = createSystem(PhysicsTick, withInput((world, input) => {
-  for (const entity of world.query(KeyboardController, Velocity)) {
-    const controller = entity.get(KeyboardController)
+  for (const entity of world.query(Player, Velocity)) {
+    const { speed } = entity.get(Player)
     const velocity = entity.get(Velocity)
 
-    velocity.x = (+input.isRightPressed - +input.isLeftPressed) * controller.speed
-    velocity.y = (+input.isDownPressed - +input.isUpPressed) * controller.speed
+    velocity.x = (+input.isRightPressed - +input.isLeftPressed) * speed
+    velocity.y = (+input.isDownPressed - +input.isUpPressed) * speed
 
     if (velocity.x !== 0 && velocity.y !== 0) {
       velocity.x /= SQRT_2

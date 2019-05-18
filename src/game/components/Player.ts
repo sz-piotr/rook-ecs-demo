@@ -1,7 +1,7 @@
 import { InspectInfo } from '../InspectInfo'
 
-export class KeyboardController {
-  static type = 'KeyboardController'
+export class Player {
+  static type = 'Player'
 
   constructor(
     public speed: number,
@@ -9,7 +9,7 @@ export class KeyboardController {
 
   inspect(): InspectInfo {
     return {
-      name: KeyboardController.type,
+      name: Player.type,
       props: [
         { key: 'speed', value: this.speed.toFixed(2) },
       ]

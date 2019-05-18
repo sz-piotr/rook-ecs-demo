@@ -7,13 +7,13 @@ export function renderCollider (ctx: CanvasRenderingContext2D, entity: Entity) {
   }
 
   const position = entity.get(Position)
-  const rectangle = entity.get(Collider)
+  const collider = entity.get(Collider)
 
   ctx.strokeStyle = 'red'
   ctx.strokeRect(
-    position.x,
-    position.y,
-    rectangle.width,
-    rectangle.height,
+    position.x + collider.left,
+    position.y + collider.top,
+    collider.right - collider.left,
+    collider.bottom - collider.top,
   )
 }

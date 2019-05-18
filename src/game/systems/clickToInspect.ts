@@ -2,6 +2,7 @@ import { World, InitEvent, RenderTick } from 'rook-ecs'
 import { Inspectable, Position, Collider, Renderable } from '../components'
 import { sortByZIndex } from './render/sortByZIndex'
 import { reversed } from 'src/util/reverse';
+import { getCameraPosition } from './utils/getCameraPosition'
 
 interface Point {
   x: number,
@@ -14,8 +15,8 @@ export function clickToInspect (canvas: HTMLCanvasElement) {
   function onMouseClick (e: MouseEvent) {
     const { left, top } = canvas.getBoundingClientRect()
     clickedAt = {
-      x: e.clientX - left,
-      y: e.clientY - top,
+      x: e.clientX - left - canvas.width / 2,
+      y: e.clientY - top - canvas.height / 2,
     }
   }
 
@@ -38,16 +39,19 @@ function inspectClicked (world: World<any>, { x, y }: Point) {
   }
 
   const entities = sortByZIndex(world.query(Renderable, Position, Collider))
+  const cameraPosition = getCameraPosition(world)
+
   for (const entity of reversed(entities)) {
     const position = entity.get(Position)
     const rectangle = entity.get(Collider)
 
-    if (
-      x >= position.x &&
-      y >= position.y &&
-      x < position.x + rectangle.width &&
-      y < position.y + rectangle.height
-    ) {
+
+    const left = position.x - cameraPosition.x + rectangle.left
+    const top = position.y - cameraPosition.y + rectangle.top
+    const right = position.x - cameraPosition.x + rectangle.right
+    const bottom = position.y - cameraPosition.y + rectangle.bottom
+
+    if (x >= left && y >= top && x < right && y < bottom) {
       entity.add(new Inspectable())
       break
     }
