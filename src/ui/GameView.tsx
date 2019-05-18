@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { InspectInfo } from 'src/game/InspectInfo'
 import { startGame } from '../game'
 import { Inspector } from './Inspector'
+import { loadAssets } from './assets'
 
 export function GameView () {
   const canvas = useRef<HTMLCanvasElement>(null)
@@ -19,7 +20,12 @@ export function GameView () {
   }, [])
 
   useEffect(() => {
-    return startGame(canvas.current!, setInspected)
+    const promise = (async () => startGame(
+      canvas.current!,
+      await loadAssets(),
+      setInspected,
+    ))()
+    return () => { promise.then(fn => fn()) }
   }, [])
 
   return (

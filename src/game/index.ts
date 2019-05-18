@@ -1,5 +1,6 @@
 import { start, gameClock } from 'rook-ecs'
 import { InspectInfo } from './InspectInfo'
+import { Assets } from 'src/ui/assets'
 import { init } from './systems/init'
 import { move } from './systems/move'
 import { clickToInspect } from './systems/clickToInspect'
@@ -10,6 +11,7 @@ import { keyboardControl } from './systems/keyboardControl'
 
 export function startGame (
   canvas: HTMLCanvasElement,
+  assets: Assets,
   setInspected: (value: InspectInfo[]) => void,
 ) {
   return start([
@@ -20,6 +22,6 @@ export function startGame (
     move,
     clickToInspect(canvas),
     inspector(setInspected),
-    render(canvas),
+    render(canvas, assets),
   ])
 }
