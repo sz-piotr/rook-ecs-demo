@@ -11,6 +11,7 @@ import { keyboardControl } from './systems/keyboardControl'
 import { cameraControl } from './systems/cameraControl'
 import { spawnEnemies } from './systems/spawnEnemies'
 import { killDistantEnemies } from './systems/killDistantEnemies'
+import { enemyControl } from './systems/enemyControl'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -24,6 +25,7 @@ export function startGame (
     killDistantEnemies,
     keyboardInput(),
     keyboardControl,
+    enemyControl,
     move,
     cameraControl(canvas),
     clickToInspect(canvas),

@@ -1,6 +1,6 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
-import { Position, Player, Velocity, Sprite, Collider, Renderable, EnemySpawner } from '../components'
-import { Enemy } from '../components/Enemy';
+import { Enemy, Position, Player, Velocity, Sprite, Collider, Renderable, EnemySpawner } from '../components'
+import { uniform } from 'src/util/uniform';
 
 export const spawnEnemies = createSystem(PhysicsTick, function (world) {
   for (const entity of world.query(EnemySpawner)) {
@@ -35,7 +35,3 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
     }
   }
 })
-
-function uniform (from: number, to: number) {
-  return from + Math.random() * (to - from)
-}

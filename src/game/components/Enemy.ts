@@ -4,6 +4,7 @@ export class Enemy {
   static type = 'Enemy'
 
   constructor(
+    public speed: number,
     public hitpoints: number,
   ) {}
 
@@ -17,14 +18,14 @@ export class Enemy {
   }
 
   static forDemonBasic () {
-    return new Enemy(3)
+    return new Enemy(300, 3)
   }
 
   static forDemonFast () {
-    return new Enemy(5)
+    return new Enemy(600, 5)
   }
 
   static forDemonLarge () {
-    return new Enemy(10)
+    return new Enemy(200, 10)
   }
 }

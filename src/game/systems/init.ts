@@ -17,7 +17,7 @@ export const init = createSystem(InitEvent, function (world) {
     Sprite.forPlayer(),
     Collider.forPlayer(),
     new Renderable(10),
-    new Player(500),
+    new Player(2000),
   ])
   world.add([
     new Position(0, 0),
