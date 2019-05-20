@@ -2,26 +2,13 @@ import { World, InitEvent, RenderTick } from 'rook-ecs'
 import { KeyboardInput } from '../components'
 
 export function keyboardInput () {
-  const inputs = {
-    left: false,
-    right: false,
-    up: false,
-    down: false,
-  }
+  const inputs: Record<string, boolean | undefined> = {}
 
   const onKeyDown = (e: KeyboardEvent) => onKeyChange(e.code, true)
   const onKeyUp = (e: KeyboardEvent) => onKeyChange(e.code, false)
 
   function onKeyChange (key: string, pressed: boolean) {
-    if (key === 'ArrowLeft') {
-      inputs.left = pressed
-    } else if (key === 'ArrowRight') {
-      inputs.right = pressed
-    } else if (key === 'ArrowUp') {
-      inputs.up = pressed
-    } else if (key === 'ArrowDown') {
-      inputs.down = pressed
-    }
+    inputs[key as keyof typeof inputs] = pressed
   }
 
   return function (world: World<unknown>) {
@@ -38,10 +25,10 @@ export function keyboardInput () {
     if (world.event instanceof RenderTick) {
       for (const entity of world.query(KeyboardInput)) {
         const input = entity.get(KeyboardInput)
-        input.isLeftPressed = inputs.left
-        input.isRightPressed = inputs.right
-        input.isUpPressed = inputs.up
-        input.isDownPressed = inputs.down
+        input.isLeftPressed = !!(inputs.ArrowLeft || inputs.KeyA)
+        input.isRightPressed = !!(inputs.ArrowRight || inputs.KeyD)
+        input.isUpPressed = !!(inputs.ArrowUp || inputs.KeyW)
+        input.isDownPressed = !!(inputs.ArrowDown || inputs.KeyS)
       }
     }
   }
