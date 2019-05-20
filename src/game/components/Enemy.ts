@@ -16,16 +16,4 @@ export class Enemy {
       ]
     }
   }
-
-  static forDemonBasic () {
-    return new Enemy(300, 3)
-  }
-
-  static forDemonFast () {
-    return new Enemy(400, 5)
-  }
-
-  static forDemonLarge () {
-    return new Enemy(200, 10)
-  }
 }

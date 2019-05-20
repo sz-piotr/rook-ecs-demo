@@ -1,6 +1,7 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
-import { Enemy, Position, Player, Velocity, Sprite, Collider, Renderable, EnemySpawner } from '../components'
+import { Position, Player, EnemySpawner } from '../components'
 import { uniform } from 'src/util/uniform';
+import { demonLarge, demonFast, demonBasic } from '../assemblages';
 
 export const spawnEnemies = createSystem(PhysicsTick, function (world) {
   for (const entity of world.query(EnemySpawner)) {
@@ -18,41 +19,18 @@ export const spawnEnemies = createSystem(PhysicsTick, function (world) {
         const angle = uniform(0, Math.PI * 2)
         const distance = uniform(2000, 2500)
 
-        const position = new Position(
-          playerPosition.x + Math.cos(angle) * distance,
-          playerPosition.y + Math.sin(angle) * distance,
-        )
+        const x = playerPosition.x + Math.cos(angle) * distance
+        const y = playerPosition.y + Math.sin(angle) * distance
 
         const [fastTreshold, largeTreshold] = getChances(spawner.difficulty)
 
         const roll = Math.random()
         if (roll < fastTreshold) {
-          world.add([
-            position,
-            new Velocity(0, 0),
-            new Renderable(10),
-            Sprite.forDemonBasic(),
-            Collider.forDemonBasic(),
-            Enemy.forDemonBasic(),
-          ])
+          world.add(demonBasic(x, y))
         } else if (roll < largeTreshold) {
-          world.add([
-            position,
-            new Velocity(0, 0),
-            new Renderable(10),
-            Sprite.forDemonFast(),
-            Collider.forDemonFast(),
-            Enemy.forDemonFast(),
-          ])
+          world.add(demonFast(x, y))
         } else {
-          world.add([
-            position,
-            new Velocity(0, 0),
-            new Renderable(10),
-            Sprite.forDemonLarge(),
-            Collider.forDemonLarge(),
-            Enemy.forDemonLarge(),
-          ])
+          world.add(demonLarge(x, y))
         }
       }
     }

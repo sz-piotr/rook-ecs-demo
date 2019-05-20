@@ -21,20 +21,4 @@ export class Collider {
       ]
     }
   }
-
-  static forPlayer() {
-    return new Collider(-35, -121, 35, 0)
-  }
-
-  static forDemonBasic () {
-    return new Collider(-50, -125, 45, -10)
-  }
-
-  static forDemonFast () {
-    return new Collider(-65, -125, 50, -10)
-  }
-
-  static forDemonLarge () {
-    return new Collider(-70, -205, 50, -10)
-  }
 }
