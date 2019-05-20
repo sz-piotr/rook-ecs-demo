@@ -21,7 +21,7 @@ export function render (canvas: HTMLCanvasElement, assets: Assets) {
     renderFloor(ctx, world, assets)
 
     for (const entity of sortByZIndex(world.query(Renderable))) {
-      // renderCollider(ctx, entity)
+      renderCollider(ctx, entity)
       renderSprite(ctx, entity, assets)
     }
 

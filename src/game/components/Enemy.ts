@@ -12,6 +12,7 @@ export class Enemy {
     return {
       name: Enemy.type,
       props: [
+        { key: 'speed', value: this.speed.toFixed(2) },
         { key: 'hitpoints', value: this.hitpoints.toString() },
       ]
     }

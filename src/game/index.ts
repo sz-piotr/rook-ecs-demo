@@ -13,6 +13,7 @@ import { spawnEnemies } from './systems/spawnEnemies'
 import { killDistantEntities } from './systems/killDistantEntities'
 import { enemyControl } from './systems/enemyControl'
 import { enemyHerding } from './systems/enemyHerding'
+import { shootBullets } from './systems/shootBullets'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -26,6 +27,7 @@ export function startGame (
     killDistantEntities,
     keyboardInput(),
     keyboardControl,
+    shootBullets,
     enemyControl,
     enemyHerding,
     move,
