@@ -25,4 +25,7 @@ export const Vector2 = {
       y: v.y - u.y
     }
   },
+  angle (v: Point) {
+    return Math.atan2(v.y, v.x)
+  }
 }
