@@ -11,12 +11,16 @@ export function inspector (setInspected: (value: InspectInfo[]) => void) {
     }
 
     const components: Record<string, any> = (inspected as any).components
-    const items: InspectInfo[] = []
-    for (const component of Object.values(components)) {
-      if (component && typeof component.inspect === 'function') {
-        items.push(component.inspect())
-      }
-    }
+    const items = Object.values(components)
+      .map(component => ({
+        name: component.constructor.type as string,
+        props: Object.keys(component).map(key => ({
+          key,
+          value: JSON.stringify(component[key])
+        }))
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name))
+
     setInspected(items)
   })
 }

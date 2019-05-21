@@ -1,6 +1,6 @@
 import { createSystem, RenderTick } from 'rook-ecs'
 import { Assets } from 'src/ui/assets'
-import { Renderable } from 'src/game/components'
+import { Renderable, Inspectable } from 'src/game/components'
 import { renderCollider } from './collider'
 import { sortByZIndex } from './sortByZIndex'
 import { renderSprite } from './sprite'
@@ -21,8 +21,10 @@ export function render (canvas: HTMLCanvasElement, assets: Assets) {
     renderFloor(ctx, world, assets)
 
     for (const entity of sortByZIndex(world.query(Renderable))) {
-      // renderCollider(ctx, entity)
       renderSprite(ctx, entity, assets)
+      if (entity.has(Inspectable)) {
+        renderCollider(ctx, entity)
+      }
     }
 
     ctx.restore()
