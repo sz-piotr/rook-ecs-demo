@@ -8,7 +8,7 @@ export const hurtEnemies = createSystem(PhysicsTick, function (world) {
         world.remove(bullet)
         const enemy = enemyEntity.get(Enemy)
         enemy.hitpoints -= bullet.get(Bullet).damage
-        if (enemy.hitpoints === 0) {
+        if (enemy.hitpoints <= 0) {
           world.remove(enemyEntity)
         }
         break
