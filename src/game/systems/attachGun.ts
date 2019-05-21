@@ -9,8 +9,10 @@ export const attachGun = createSystem(PhysicsTick, function (world) {
   }
   const { x, y } = Vector2.add(player.get(Position), { x: -10, y: -60 })
   for (const entity of world.query(Gun, Position)) {
-    const position = entity.get(Position)
-    position.x = x
-    position.y = y
+    if (entity.get(Gun).equipped) {
+      const position = entity.get(Position)
+      position.x = x
+      position.y = y
+    }
   }
 })

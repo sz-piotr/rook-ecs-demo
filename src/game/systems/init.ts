@@ -1,10 +1,10 @@
 import { createSystem, InitEvent } from 'rook-ecs'
 import { EnemySpawner, Position, Camera } from '../components'
-import { player, gunAk47 } from '../assemblages'
+import { player, gunBasic } from '../assemblages'
 
 export const init = createSystem(InitEvent, function (world) {
   world.add(player())
-  world.add(gunAk47())
+  world.add(gunBasic())
   world.add([
     new Position(0, 0),
     new Camera(),

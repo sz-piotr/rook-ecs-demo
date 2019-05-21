@@ -18,6 +18,8 @@ import { mouseInput } from './systems/mouseInput'
 import { mouseControl } from './systems/mouseControl'
 import { hurtEnemies } from './systems/hurtEnemies'
 import { attachGun } from './systems/attachGun'
+import { expireGun } from './systems/expireGun'
+import { pickUpGun } from './systems/pickUpGun'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -37,7 +39,9 @@ export function startGame (
     enemyControl,
     enemyHerding,
     move,
+    pickUpGun,
     attachGun,
+    expireGun,
     hurtEnemies,
     cameraControl(canvas),
     clickToInspect(canvas),
