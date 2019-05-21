@@ -17,6 +17,7 @@ import { shootBullets } from './systems/shootBullets'
 import { mouseInput } from './systems/mouseInput'
 import { mouseControl } from './systems/mouseControl'
 import { hurtEnemies } from './systems/hurtEnemies'
+import { attachGun } from './systems/attachGun'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -36,6 +37,7 @@ export function startGame (
     enemyControl,
     enemyHerding,
     move,
+    attachGun,
     hurtEnemies,
     cameraControl(canvas),
     clickToInspect(canvas),

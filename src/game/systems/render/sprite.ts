@@ -12,25 +12,29 @@ export function renderSprite (ctx: CanvasRenderingContext2D, entity: Entity, ass
 
   const image = assets[sprite.asset]
 
-  const shouldInvert = entity.has(Enemy) && entity.has(Velocity) && entity.get(Velocity).x < 0
-  if (!shouldInvert) {
-    ctx.drawImage(
-      image,
-      position.x + sprite.offsetX,
-      position.y + sprite.offsetY,
-    )
-  } else {
-    ctx.save()
-    ctx.translate(
-      position.x + sprite.offsetX + image.width / 2,
-      position.y + sprite.offsetY + image.height / 2,
-    )
+  ctx.save()
+  ctx.translate(
+    position.x + sprite.offsetX + image.width / 2,
+    position.y + sprite.offsetY + image.height / 2,
+  )
+
+  if (shouldInvert(entity)) {
     ctx.scale(-1, 1)
-    ctx.drawImage(
-      image,
-      -image.width / 2,
-      -image.height / 2,
-    )
-    ctx.restore()
   }
+  if (sprite.rotation !== 0) {
+    ctx.translate(sprite.offsetX, sprite.offsetY)
+    ctx.rotate(sprite.rotation)
+    ctx.translate(-sprite.offsetX, -sprite.offsetY)
+  }
+
+  ctx.drawImage(
+    image,
+    -image.width / 2,
+    -image.height / 2,
+  )
+
+  ctx.restore()
 }
+
+const shouldInvert = (entity: Entity) =>
+  entity.has(Enemy) && entity.has(Velocity) && entity.get(Velocity).x < 0

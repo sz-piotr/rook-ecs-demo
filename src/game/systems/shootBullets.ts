@@ -1,6 +1,7 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
 import { Position, ShootsBullets } from '../components'
 import { bulletNormal } from '../assemblages'
+import { Vector2 } from 'src/util/vector'
 
 export const shootBullets = createSystem(PhysicsTick, function (world) {
   for (const entity of world.query(Position, ShootsBullets)) {
@@ -11,7 +12,12 @@ export const shootBullets = createSystem(PhysicsTick, function (world) {
     if (shootsBullets.timeleft < 0) {
       shootsBullets.timeleft += shootsBullets.interval
 
-      world.add(bulletNormal(position, shootsBullets.angle))
+      const bulletPosition = Vector2.add(
+        position,
+        Vector2.fromPolar(shootsBullets.offset, shootsBullets.angle)
+      )
+
+      world.add(bulletNormal(bulletPosition, shootsBullets.angle))
     }
   }
 })

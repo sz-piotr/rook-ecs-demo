@@ -27,5 +27,11 @@ export const Vector2 = {
   },
   angle (v: Point) {
     return Math.atan2(v.y, v.x)
+  },
+  fromPolar (r: number, phi: number) {
+    return {
+      x: r * Math.cos(phi),
+      y: r * Math.sin(phi)
+    }
   }
 }

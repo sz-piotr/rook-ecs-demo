@@ -8,6 +8,5 @@ export function player () {
     new Collider(-35, -121, 35, 0),
     new Renderable(10),
     new Player(500),
-    new ShootsBullets('normal', 0.5, 0),
   ]
 }
