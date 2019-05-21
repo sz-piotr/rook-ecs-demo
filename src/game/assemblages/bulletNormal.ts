@@ -1,5 +1,5 @@
 import { Point } from 'src/util/vector'
-import { Position, Velocity, Sprite, Collider, Renderable } from '../components'
+import { Position, Velocity, Sprite, Collider, Renderable, Bullet } from '../components'
 
 export function bulletNormal ({ x, y }: Point, angle: number) {
   return [
@@ -8,5 +8,6 @@ export function bulletNormal ({ x, y }: Point, angle: number) {
     new Sprite('bulletNormal', -29 / 2, -29 / 2),
     new Collider(-12, -12, 12, 12),
     new Renderable(20),
+    new Bullet(1),
   ]
 }

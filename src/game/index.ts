@@ -16,6 +16,7 @@ import { enemyHerding } from './systems/enemyHerding'
 import { shootBullets } from './systems/shootBullets'
 import { mouseInput } from './systems/mouseInput'
 import { mouseControl } from './systems/mouseControl'
+import { hurtEnemies } from './systems/hurtEnemies'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -35,6 +36,7 @@ export function startGame (
     enemyControl,
     enemyHerding,
     move,
+    hurtEnemies,
     cameraControl(canvas),
     clickToInspect(canvas),
     inspector(setInspected),
