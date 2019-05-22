@@ -1,4 +1,4 @@
-export type BulletType = 'normal' | 'fast'
+export type BulletType = 'normal' | 'homing'
 export class ShootsBullets {
   static type = 'ShootsBullets'
   public timeleft = 0
