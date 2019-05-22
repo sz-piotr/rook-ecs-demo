@@ -25,6 +25,18 @@ export const Vector2 = {
       y: v.y - u.y
     }
   },
+  mul (v: Point, amount: number) {
+    return {
+      x: v.x * amount,
+      y: v.y * amount
+    }
+  },
+  rotate (v: Point, angle: number) {
+    return {
+      x: v.x * Math.cos(angle) - v.y * Math.sin(angle),
+      y: v.x * Math.sin(angle) + v.y * Math.cos(angle),
+    }
+  },
   angle (v: Point) {
     return Math.atan2(v.y, v.x)
   },
