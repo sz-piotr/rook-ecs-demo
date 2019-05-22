@@ -1,6 +1,7 @@
 import { Entity } from 'rook-ecs'
 import { Position, Sprite, Enemy, Velocity } from 'src/game/components'
 import { Assets } from 'src/ui/assets'
+import { Vector2 } from 'src/util/vector'
 
 export function renderSprite (ctx: CanvasRenderingContext2D, entity: Entity, assets: Assets) {
   if (!entity.has(Position) || !entity.has(Sprite)) {
@@ -12,19 +13,24 @@ export function renderSprite (ctx: CanvasRenderingContext2D, entity: Entity, ass
 
   const image = assets[sprite.asset]
 
+  const offset = {
+    x: sprite.offsetX + image.width / 2,
+    y: sprite.offsetY + image.height / 2
+  }
+
   ctx.save()
   ctx.translate(
-    position.x + sprite.offsetX + image.width / 2,
-    position.y + sprite.offsetY + image.height / 2,
+    position.x + offset.x,
+    position.y + offset.y,
   )
 
   if (shouldInvert(entity)) {
     ctx.scale(-1, 1)
   }
   if (sprite.rotation !== 0) {
-    ctx.translate(sprite.offsetX, sprite.offsetY)
+    ctx.translate(-offset.x, -offset.y)
     ctx.rotate(sprite.rotation)
-    ctx.translate(-sprite.offsetX, -sprite.offsetY)
+    ctx.translate(offset.x, offset.y)
   }
 
   ctx.drawImage(
