@@ -20,6 +20,7 @@ import { hurtEnemies } from './systems/hurtEnemies'
 import { attachGun } from './systems/attachGun'
 import { expireGun } from './systems/expireGun'
 import { pickUpGun } from './systems/pickUpGun'
+import { moveHoming } from './systems/moveHoming'
 
 export function startGame (
   canvas: HTMLCanvasElement,
@@ -39,6 +40,7 @@ export function startGame (
     enemyControl,
     enemyHerding,
     move,
+    moveHoming,
     pickUpGun,
     attachGun,
     expireGun,

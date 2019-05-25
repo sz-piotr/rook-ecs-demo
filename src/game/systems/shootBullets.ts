@@ -1,6 +1,6 @@
 import { createSystem, PhysicsTick } from 'rook-ecs'
 import { Position, ShootsBullets, Gun } from '../components'
-import { bulletNormal } from '../assemblages'
+import { bulletNormal, bulletHoming } from '../assemblages'
 import { Vector2 } from 'src/util/vector'
 
 export const shootBullets = createSystem(PhysicsTick, function (world) {
@@ -21,7 +21,11 @@ export const shootBullets = createSystem(PhysicsTick, function (world) {
         Vector2.fromPolar(shootsBullets.offset, shootsBullets.angle)
       )
 
-      world.add(bulletNormal(bulletPosition, shootsBullets.angle))
+      if (shootsBullets.bulletType === 'normal') {
+        world.add(bulletNormal(bulletPosition, shootsBullets.angle))
+      } else if (shootsBullets.bulletType === 'homing') {
+        world.add(bulletHoming(bulletPosition, shootsBullets.angle))
+      }
     }
   }
 })
